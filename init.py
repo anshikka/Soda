@@ -1,6 +1,5 @@
 import authenticate_credentials as auth
 import data_retriever as dr
-import data_cleaner as dc
 
 #input keys for twitter
 CONSUMER_KEY = 'INSERT_CONSUMER_KEY_HERE'
