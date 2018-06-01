@@ -1,32 +1,20 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
 import init
-import data_cleaner as dc
+from analysis import sentiment_analysis as sa
+from data import data_cleaner as dc
+import dash_html_components as html
+from visualization import graphs_processor as gp
+from visualization import color_picker as cp
 
-main_database = init.getDatabase()
 
-colors = {'twitter_blue' : '#7FDBFF',
-          'background' : '#111111'
-}
+
+
 
 app = dash.Dash()
-app.layout = html.Div(style = {'backgroundColor' : colors['background']}, children=[
-    html.H1(children='Twitter Data Analysis', style = {'font-family' : 'Roboto', 'textAlign' : 'center', 'color': colors['twitter_blue']}),
-    dcc.Graph(
-        id='example',
-        figure={
-            'data': [
-                {'x': dc.getListOfLikes(main_database), 'y': dc.getListOfRetweets(main_database), 'type': 'bar', 'name': 'Likes vs. Retweets'}
-            ],
-            'layout': {
-                'title': 'Likes vs. Retweets',
-                'color' : 'blue',
-                'xaxis' : {'title' :'Likes', 'color': colors['twitter_blue']},
-                'yaxis' : {'title' : 'Retweets', 'color': colors['twitter_blue']}
-            }
-        }
-    )
+app.layout = html.Div(style = {'backgroundColor' : cp.getColor('background')}, children=[
+    html.H1(children='Twitter Data Analysis', style = {'font-family' : 'Roboto', 'textAlign' : 'center', 'color': cp.getColor('twitter_blue')}),
+    gp.processComparisonGraph(main_database),
+    gp.processSentimentGraph(sa.getSentimentScore(dc.getListOfTweetsWithoutRetweets(main_database)))
 ])
 
 if __name__ == '__main__':

@@ -1,8 +1,12 @@
 import json
-import MySQLdb
 from dateutil import parser
 
-import data_cleaner as dc
+def empty_database(db):
+    cursor = db.cursor()
+    empty_query_1 = "TRUNCATE TABLE twitter_with_retweets"
+    empty_query_2 = "TRUNCATE TABLE twitter_without_retweets"
+    cursor.execute(empty_query_1)
+    cursor.execute(empty_query_2)
 
 def get_tweets_with_retweets_from_user(api, username):
     current_api = api

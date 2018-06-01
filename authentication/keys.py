@@ -1,0 +1,20 @@
+twitter = {'CONSUMER_KEY' : 'INSERT_CONSUMER_KEY_HERE',
+'CONSUMER_SECRET' : 'INSERT_CONSUMER_SECRET_HERE',
+'ACCESS_TOKEN' : 'INSERT_ACCESS_TOKEN_HERE',
+'ACCESS_TOKEN_SECRET' : 'INSERT_ACCESS_TOKEN_SECRET_HERE'
+}
+
+
+sql = {
+'HOST' : 'INSERT_HOST_HERE',
+'USER' : 'INSERT_USERNAME_HERE',
+'PASSWORD' : 'INSERT_PASSWORD_HERE',
+'DATABASE' : 'INSERT_DATABASE_NAME_HERE',
+'PORT' : 'INSERT_PORT_HERE'
+}
+
+def twitter_keys(key_name):
+    return twitter[key_name]
+
+def sql_keys(key_name):
+    return sql[key_name]
