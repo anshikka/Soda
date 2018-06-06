@@ -2,6 +2,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 from data import data_cleaner as dc
 from . import color_picker
+import dash_table_experiments as dt
+import plotly.plotly as py
+import plotly.graph_objs as go
+import pandas as pd
+
 
 def processComparisonGraph(main_database):
     return dcc.Graph(
@@ -32,3 +37,21 @@ def processSentimentGraph(score):
     else:
         return html.P(children = 'Your tweets are neutral. Maybe you should try to engage more emotion in your audience.',
             style = {'font-family' : 'Roboto', 'fontSize': 40,  'textAlign' : 'left', 'color': color_picker.getColor('twitter_blue')})
+
+
+
+def generate_table(main_database):
+
+    dataframe_top_five_tweets = pd.DataFrame({
+        'Tweet': dc.getTopFiveTweets(main_database)[0],
+        'Likes': dc.getTopFiveTweets(main_database)[1],
+        'Retweets' : dc.getTopFiveTweets(main_database)[2]
+    })
+
+
+    return dt.DataTable(
+        rows = dataframe_top_five_tweets.to_dict('records'),
+        id = 'table_top_five',
+    )
+
+
