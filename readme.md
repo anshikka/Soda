@@ -1,6 +1,6 @@
 # Soda
 
-Soda is a simple social data analysis tool that takes your profile data from various profile data (Still in Production)
+Soda is a simple social data analysis tool that takes your profile data from various social platforms (Still in Production) (Twitter only supported)
 ### Requirements
   - Obtain Twitter API Keys 
   - Set up a MySQL Server on Your Machine
