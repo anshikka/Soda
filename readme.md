@@ -1,4 +1,5 @@
-# Soda
+# Soda ![alt text](https://github.com/anshikka/Soda/blob/master/aux/soda.PNG "Logo Title Text 1")
+
 
 Soda is a simple social data analysis tool that takes your profile data from various social platforms (Still in Production) (Twitter only supported)
 ### Requirements
